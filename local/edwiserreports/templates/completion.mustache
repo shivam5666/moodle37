@@ -1,0 +1,87 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    Edwiser RemUI
+    @package   theme_remui
+    @copyright (c) 2020 WisdmLabs (https://wisdmlabs.com/)
+    @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+
+}}
+{{!
+    @template theme_remui/activity_navigation
+
+    Display the activity navigation for all activities in a course
+
+    Context variables required for this template:
+
+    Example context (json):
+    {
+    }
+}}
+<div id="wdm-completion-individual" class="table-responsive" data-sesskey="{{sesskey}}">
+    <div id="userfilter" class="h-auto mt-2">
+        <div class="row">
+            <div class="filter-selector col-12 col-md-3 mb-1">
+                {{> local_edwiserreports/datatable/search }}
+            </div>
+            {{# cohortfilters }}
+                <div class="filter-selector col-12 col-md-2 mb-1">
+                    <select class="cohort-select form-control singleselect" name="cohort-select">
+                        {{#values}}
+                            <option value="{{id}}">{{name}}</option>
+                        {{/values}}
+                    </select>
+                </div>
+            {{/ cohortfilters }}
+            <div class="filter-selector col-12 col-md-3 mb-1 ml-auto">
+                {{> local_edwiserreports/datatable/length }}
+            </div>
+        </div>
+    </div>
+    <table class="table w-100">
+        <thead>
+            <tr>
+                <th class="theme-3-bg text-white">
+                    {{#str}} fullname, local_edwiserreports {{/str}}
+                </th>
+                <th class="text-center theme-3-bg text-white">
+                    {{#str}} enrolledon, local_edwiserreports {{/str}}
+                </th>
+                <th class="text-center theme-3-bg text-white">
+                    {{#str}} enrolltype, local_edwiserreports {{/str}}
+                </th>
+                <th class="text-center theme-3-bg text-white">
+                    {{#str}} noofvisits, local_edwiserreports {{/str}}
+                </th>
+                <th class="text-center theme-3-bg text-white">
+                    {{#str}} coursecompletion, local_edwiserreports {{/str}}
+                </th>
+                <th class="text-center theme-3-bg text-white">
+                    {{#str}} completiontime, local_edwiserreports {{/str}}
+                </th>
+                <th class="text-center theme-3-bg text-white">
+                    {{#str}} grade, local_edwiserreports {{/str}}
+                </th>
+                <th class="text-center theme-3-bg text-white">
+                    {{#str}} lastaccess, local_edwiserreports {{/str}}
+                </th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    {{# completionexport }}
+    <div class="pull-right px-5">
+        {{> local_edwiserreports/exportreports }}
+    </div>
+    {{/ completionexport }}
+</div>
